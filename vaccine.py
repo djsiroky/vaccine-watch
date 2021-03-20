@@ -67,7 +67,11 @@ def check_for_appointments():
         notify_available(newly_available_locations)
         print("{} newly available locations".format(len(newly_available_locations)))
 
-    if len(newly_unavailable_locations) > 0:
+    if (
+        "ENABLE_UNAVAILABLE_ALERTS" in os.environ
+        and os.environ["ENABLE_UNAVAILABLE_ALERTS"].lower() in TRUE_VALUES
+        and len(newly_unavailable_locations) > 0
+    ):
         notify_unavailable(newly_unavailable_locations)
         print("{} newly unavailable locations".format(len(newly_unavailable_locations)))
 
