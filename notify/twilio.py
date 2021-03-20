@@ -21,7 +21,7 @@ def format_available_message(locations):
     )
     for location in locations:
         if "earliest_appointment_day" in location:
-            if datetime.strptime(location["latest_appointment_day"], "%b %-d") >= datetime.strptime("04/09/2021", "%d/%m/%Y").date():
+            if datetime.strptime(location["latest_appointment_day"] + " 2021", "%b %d %Y") >= datetime.strptime("04/09/2021", "%d/%m/%Y").date():
                 if (
                     location["earliest_appointment_day"]
                     == location["latest_appointment_day"]
